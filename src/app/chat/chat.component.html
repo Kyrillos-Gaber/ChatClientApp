@@ -15,7 +15,12 @@
         <div class="row mt-1" *ngFor="let user of chatService.onlineUsers">
           <div class="col">
             <div class="d-grid">
-              <button type="button" class="btn btn-success card-text btn-block">{{user}}</button>
+              <button type="button" class="btn btn-success card-text btn-block"
+              [ngClass]="{'btn-success': user === chatService.myName , 'btn-dark': user !== chatService.myName}"
+              (dblclick)="openPrivateChat(user)"
+              [disabled]="user === chatService.myName">
+                {{user}}
+              </button>
             </div>
           </div>
         </div>
